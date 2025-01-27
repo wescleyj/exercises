@@ -1,74 +1,45 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-void erroAlocacao(char *vetor);
+char *removerEspacos(const char *str);
 
-int main(void)
+int main()
 {
-    int contador = 0, size = 2, k = 0, semEspaço = 1;
-    char *vetor = malloc(size * sizeof(char)), caracter;
-    char *vetorAux = malloc(semEspaço * sizeof(char));
+    char *entrada;
+    char buffer[100];
 
-    erroAlocacao(vetor);
-    erroAlocacao(vetorAux);
+    printf("Digite uma sequência de caracteres: ");
+    fgets(buffer, sizeof(buffer), stdin);
+    buffer[strcspn(buffer, "\n")] = '\0';
+    
+    entrada = (char *)malloc((strlen(buffer) + 1) * sizeof(char));
+    strcpy(entrada, buffer);
 
-    while (1)
-    {
-        scanf("%c", &caracter);
-        getchar();
+    char *resultado = removerEspacos(entrada);
 
-        if (caracter == '.')
-        {
-            vetor[contador] = '\0';
-            break;
-        }
-        else
-        {
-            if ((size - 1) >= contador)
-            {
-                size += 10;
-                vetor = realloc(vetor, size * sizeof(char));
-                erroAlocacao(vetor);
-            }
-            if (caracter != ' ')
-            {
-                semEspaço++;
-            }
+    printf("Texto sem espaços: %s\n", resultado);
 
-            vetor[contador] = caracter;
-            contador++;
-        }
-    }
-
-    vetorAux = realloc(vetorAux, semEspaço * sizeof(char));
-
-    erroAlocacao(vetorAux);
-
-    for (int i = 0; i < contador; i++)
-    {
-        if (vetor[i] != ' ')
-        {
-            vetorAux[k] = vetor[i];
-            k++;
-        }
-    }
-
-    vetorAux[k] = '\0';
-
-    printf("%s\n", vetor);
-    printf("%s\n", vetorAux);
-
-    free(vetor);
-    free(vetorAux);
+    free(entrada);
+    free(resultado);
 
     return 0;
 }
 
-void erroAlocacao(char *vetor)
+char *removerEspacos(const char *str)
 {
-    if (vetor == NULL)
+    int tamanho = strlen(str);
+    char *resultado = (char *)malloc((tamanho + 1) * sizeof(char));
+    int j = 0;
+
+    for (int i = 0; i < tamanho; i++)
     {
-        printf("Erro ao alocar memoria\n");
-        exit(1);
+        if (str[i] != ' ')
+        {
+            resultado[j++] = str[i];
+        }
     }
+    resultado[j] = '\0';
+
+    return resultado;
 }
