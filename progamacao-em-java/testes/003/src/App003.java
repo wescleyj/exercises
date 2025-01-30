@@ -2,7 +2,7 @@ import java.text.DecimalFormat;
 import java.util.Scanner;
 import java.util.Locale;
 
-public class App {
+public class App003 {
     public static void main(String[] args) throws Exception {
         Locale.setDefault(Locale.US);
         Scanner scanner = new Scanner(System.in);
