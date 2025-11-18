@@ -1,0 +1,20 @@
+#!/bin/bash
+echo -n "Primeiro número: "
+read num1
+echo -n "Segundo número: "
+read num2
+echo -n "Terceiro número: "
+read num3
+echo
+echo -n "O maior número é o "
+if [ $num1 -ge $num2 ]; then
+	if [ $num1 -ge $num3 ]; then
+		echo "$num1"
+else
+	echo "$num3"
+fi
+elif [ $num2 -ge $num3 ]; then
+	echo "$num2"
+else
+	echo "$num3"
+fi

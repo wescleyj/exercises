@@ -1,0 +1,11 @@
+#!/bin/bash
+data=$(date | awk '{print $5}' | awk -F ':' '{print $1}')
+nome=$(whoami)
+if [ $data -lt 12 -a $data -ge 00 ]; then
+	echo -n "Bom dia"
+elif [ $data -lt 18 ]; then
+	echo -n "Boa tarde"
+else
+	echo -n "Boa noite"
+fi
+echo " "$nome", seja bem vindo"

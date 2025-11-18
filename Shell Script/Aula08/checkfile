@@ -1,0 +1,35 @@
+#!/bin/bash
+# Verificando se o usúario digitou o comando corretamente e o arquivo
+passado existe
+if [ $# -eq 0 ]; then
+	echo "Usar: ./checkfile [Arquivo]"
+	exit 1
+elif [[ 2! (-e "$1") ]]; then
+	echo "$1: inválido"
+	exit 1
+fi
+# Verifica as permissões do usuario
+if [ -r "$1" ]; then
+	permr="r"
+else
+	permr="-"
+fi
+if [ -w "$1" ]; then
+	permw="w"else
+	permw="-"
+fi
+if [ -x "$1" ]; then
+	permx="x"
+else
+	permx="-"
+fi
+# Printa o tipo do arquivo e as permissões
+echo -n "$1: "
+if [ -d "$1" ]; then
+	echo -n "diretorio"
+elif [ -f "$1" ]; then
+	echo -n "arquivo"
+else
+	echo -n "desconhecido"
+fi
+echo " ($permr$permw$permx)"
