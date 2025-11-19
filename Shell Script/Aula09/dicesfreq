@@ -1,0 +1,39 @@
+#!/bin/bash
+
+um=0
+dois=0
+tres=0
+quatro=0
+cinco=0
+seis=0
+
+for (( i=0; i < "$1"; i++ )); do
+	dice="$(( $RANDOM % 6 + 1))"
+	case "$dice" in
+		1)
+			$((um++))
+			;;	
+		2)
+			$((dois++))
+			;;
+		3)
+			$((tres++))
+			;;
+		4)
+			$((quatro++))
+			;;
+		5)
+			$((cinco++))
+			;;
+		6)
+			$((seis++))
+			;;
+	esac
+done
+
+echo "Dice 1: $um"
+echo "Dice 2: $dois"
+echo "Dice 3: $tres"
+echo "Dice 4: $quatro"
+echo "Dice 5: $cinco"
+echo "Dice 6: $seis"

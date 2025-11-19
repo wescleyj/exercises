@@ -1,0 +1,22 @@
+#!/bin/bash
+
+escolhido=$(( ("$RANDOM" % 1000) + 1))
+
+echo "$escolhido"
+
+echo "Try to guess the number I thought!"
+echo
+
+until false; do
+	read -p "Choose a number (1 to 1000): " resposta
+	
+	if (( "$resposta" == "$escolhido" )); then
+		echo
+		echo "Congratulations, you guessed correctly"
+		break
+	elif (( "$resposta" < "$escolhido" )); then
+		echo "My number is higher than $resposta"
+	else
+		echo "My number is lower than $resposta"
+	fi
+done

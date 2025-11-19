@@ -1,0 +1,31 @@
+#!/bin/bash
+
+operadorEscolha="$RANDOM"
+operando1=$(( ( RANDOM % 999 ) + 1 ))
+operando2=$(( ( RANDOM % 999 ) + 1 ))
+resposta=0
+
+if (( "$operadorEscolha" % 2 == 0 )); then
+	operador="-"
+else
+	operador="+"
+fi
+
+resultado=$(( "$operando1" "$operador" "$operando2" ))
+
+echo "$resultado"
+
+printf "%5d\n%s% 3d\n-----\n" "$operando1" "$operador" "$operando2"
+
+trap 'echo " Hj não malandro"' SIGINT SIGTSTP
+
+while true; do
+	read -p "?" resposta
+	if ((resposta == resultado)); then
+		echo "Right answer"
+		break
+	else
+		echo "Wrong answer"
+	fi
+done
+

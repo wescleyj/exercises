@@ -1,0 +1,15 @@
+#!/bin/bash
+
+maior="$1"
+menor="$1"
+
+for i in $@; do
+	if (( maior < "$i" )); then
+		maior="$i"
+	elif (( menor > "$i")); then
+		menor="$i"
+	fi
+done
+
+echo "Lower: $menor"
+echo "Higher: $maior"

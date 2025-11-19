@@ -1,0 +1,5 @@
+#!/bin/bash
+
+for (( i=1; i <= $(cat /etc/passwd | wc -l); i++ )); do
+	echo "User $i: $(cat /etc/passwd | cut -f 1 -d":" | sed -n "$i p")"
+done
