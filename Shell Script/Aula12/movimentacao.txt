@@ -1,0 +1,5 @@
+01/06/2015,Salario,1000
+02/06/2015,Pagamento cartão,-230
+03/06/2015,Ingresso show,-100
+04/06/2015,Estorno cartão,20
+05/06/2015,Presente de casamento,-120
