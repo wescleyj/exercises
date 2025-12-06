@@ -14,17 +14,21 @@ public class NinjaModel {
     // Id gerado pelo banco de dados automaticamente de forma sequencial numerica
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "Id")
     private Long id;
 
+    @Column(name = "Nome")
     private String nome;
+
+    @Column(name = "Idade")
     private int idade;
 
-    @Column(unique = true)
+    @Column(unique = true, name = "E-mail")
     private String email;
 
     // Muitos ninjas tem uma unica missão
     @ManyToOne
-    @JoinColumn(name = "missoes_id")
+    @JoinColumn(name = "missoes_id") // Chave estrangeira
     private MissoesModel missao;
 
 }
